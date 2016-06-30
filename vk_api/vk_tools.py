@@ -243,7 +243,7 @@ class VkRequestsPool(object):
                         self.pool[i + x][2].update({'_error': True})
                     else:
                         if type(response[x]) == list:
-                            for j in xrange(len(response[x])):
+                            for j in range(len(response[x])):
                                 self.pool[i + x][2].update({"obj%d" % j:response[x][j]})
                         else:
                             self.pool[i + x][2].update(response[x])
