@@ -242,7 +242,11 @@ class VkRequestsPool(object):
                     if response[x] is False:
                         self.pool[i + x][2].update({'_error': True})
                     else:
-                        self.pool[i + x][2].update(response[x])
+                        if type(response[x]) == list:
+                            for j in xrange(len(response[x])):
+                                self.pool[i + x][2].update({"obj%d" % j:response[x][j]})
+                        else:
+                            self.pool[i + x][2].update(response[x])
 
 
 def sjson_dumps(*args, **kwargs):
